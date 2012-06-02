@@ -70,6 +70,20 @@ namespace TDDOsakaTest
             Assert.AreEqual(input, venderMachine.Money);
         }
 
+        [Test]
+        public void 払い戻しの確認()
+        {
+            var venderMachine = new VendorMachine();
+            var insertedMoney = new Money(100);
+
+            venderMachine.InsertMoney(insertedMoney);
+
+            int ret = venderMachine.PayBack();
+
+            Assert.AreEqual(0, venderMachine.Money);
+            Assert.AreEqual(100, ret);
+
+        }
 
     }
 }
