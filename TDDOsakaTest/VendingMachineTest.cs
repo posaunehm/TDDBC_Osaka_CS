@@ -37,16 +37,39 @@ namespace TDDOsakaTest
             Assert.AreEqual(1660, venderMachine.Money);
         }
 
-        [Test]
-        public void お金を入れる10000円()
+        [TestCase(10000)]
+        [TestCase(5000)]
+        [TestCase(5)]
+        [TestCase(1)]
+        public void お金を入れる_異常系(int input)
         {
-            var venerMachine = new VendorMachine();
-            var insertedMoney = new Money(10000);
+            var venderMachine = new VendorMachine();
+            var insertedMoney = new Money(input);
 
+            int ret = venderMachine.InsertMoney(insertedMoney);
 
-            int ret = venerMachine.InsertMoney(insertedMoney);
-
-            Assert.AreEqual(10000, ret);
+            Assert.AreEqual(input, ret);
+            Assert.AreEqual(0, venderMachine.Money);
         }
+
+
+
+        [TestCase(1000,0)]
+        [TestCase(500,0)]
+        [TestCase(100,0)]
+        [TestCase(50,0)]
+        [TestCase(10,0)]
+        public void お金を入れる_正常系(int input, int expected)
+        {
+            var venderMachine = new VendorMachine();
+            var insertedMoney = new Money(input);
+
+            int ret = venderMachine.InsertMoney(insertedMoney);
+
+            Assert.AreEqual(expected, ret);
+            Assert.AreEqual(input, venderMachine.Money);
+        }
+
+
     }
 }

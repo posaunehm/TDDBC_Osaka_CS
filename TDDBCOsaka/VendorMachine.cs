@@ -10,9 +10,16 @@ namespace TDDBCOsaka
         public int Money { get; private set; }
 
         public int InsertMoney(Money money) {
-            Money += money.Amount;
 
-            return money.Amount;
+            if (10 <= money.Amount && money.Amount <=  1000)
+            {
+                Money += money.Amount;
+                return 0;
+            }
+            else
+            {
+                return money.Amount;
+            }
         }
     }
 }
