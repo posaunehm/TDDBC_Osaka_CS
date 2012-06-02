@@ -14,16 +14,19 @@ namespace TDDBCOsaka
 
         public int Money { get; private set; }
 
-        public int InsertMoney(Money money) {
+        public bool InsertMoney(Money money)
+        {
 
-            if (10 <= money.Amount && money.Amount <=  1000)
+            if (10 <= money.Amount && money.Amount <= 1000)
             {
                 Money += money.Amount;
-                return 0;
+                return (JuiceStock.Price <= this.Money) && JuiceStock.Stock > 0;
             }
             else
             {
-                return money.Amount;
+                throw new ArgumentException();
+
+
             }
         }
 
@@ -39,5 +42,29 @@ namespace TDDBCOsaka
         }
 
         public JuiceStock JuiceStock { get; set; }
+
+        public Tuple<Juice, int> Buy()
+        {
+            if (this.JuiceStock.Stock > 0)
+            {
+                var tmp = Money - this.JuiceStock.Price;
+                Money = 0;
+                this.JuiceStock.Stock--;
+                Earning += this.JuiceStock.Price;
+                return new Tuple<Juice, int>(
+                   new Juice { Name = this.JuiceStock.Name },
+                   tmp
+                );
+            }
+            else
+            {
+                return new Tuple<Juice, int>(
+                    null,
+                    this.Money
+                    );
+            }
+        }
+
+        public int Earning { get; set; }
     }
 }

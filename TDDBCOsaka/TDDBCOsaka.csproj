@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Juice.cs" />
     <Compile Include="JuiceStock.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Program.cs" />
