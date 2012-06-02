@@ -9,9 +9,17 @@ namespace TDDBCOsaka
     {
         public int Money { get; private set; }
 
-        public void InsertMoney(List<Money> insertedList)
+        public int InsertMoney(List<Money> insertedList)
         {
+            int money = 0;
             Money += insertedList.Sum(_ => _.Amount);
+
+            return money;
+        }
+
+        public int InsertMoney(Money money) {
+
+            return money.Amount;
         }
     }
 }
