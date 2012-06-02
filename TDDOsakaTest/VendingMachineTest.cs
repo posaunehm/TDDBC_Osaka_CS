@@ -11,13 +11,23 @@ namespace TDDOsakaTest
     [TestFixture]
     public class VendingMachineTest
     {
-        [TestCase]
+        [Test]
         public void お金を投入して金額を確認する()
         {
             var venderMachine = new VendorMachine();
-            venderMachine.InsertMoney(100);
+            venderMachine.InsertMoney(1, 1, 1, 1, 1);
 
-            Assert.AreEqual(100, venderMachine.Money);
+            Assert.AreEqual(1660, venderMachine.Money);
+        }
+
+        [Test]
+        public void お金を投入_複数回_を確認()
+        {
+            var venderMachine = new VendorMachine();
+            venderMachine.InsertMoney(1, 0, 1, 0, 1);
+            venderMachine.InsertMoney(0, 1, 0, 1, 0);
+
+            Assert.AreEqual(1660, venderMachine.Money);
         }
     }
 }
