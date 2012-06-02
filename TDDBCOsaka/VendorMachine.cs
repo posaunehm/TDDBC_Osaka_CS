@@ -7,6 +7,11 @@ namespace TDDBCOsaka
 {
     public class VendorMachine
     {
+        public VendorMachine()
+        {
+            JuiceStock = new JuiceStock { Name = "コーラ", Price = 120, Stock = 5 };
+        }
+
         public int Money { get; private set; }
 
         public int InsertMoney(Money money) {
@@ -32,5 +37,7 @@ namespace TDDBCOsaka
 
             return tmp;
         }
+
+        public JuiceStock JuiceStock { get; set; }
     }
 }

@@ -85,5 +85,16 @@ namespace TDDOsakaTest
 
         }
 
+        [Test]
+        public void ジュースの在庫確認()
+        {
+            var venderMachine = new VendorMachine();
+            JuiceStock ret = venderMachine.JuiceStock;
+
+            Assert.AreEqual(ret.Name, "コーラ");
+            Assert.AreEqual(ret.Price, 120);
+            Assert.AreEqual(ret.Stock, 5);
+        }
+
     }
 }
