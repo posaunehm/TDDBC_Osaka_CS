@@ -18,6 +18,7 @@ namespace TDDBCOsaka
         }
 
         public int InsertMoney(Money money) {
+            Money += money.Amount;
 
             return money.Amount;
         }
