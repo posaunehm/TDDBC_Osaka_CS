@@ -21,5 +21,16 @@ namespace TDDBCOsaka
                 return money.Amount;
             }
         }
+
+
+
+        public int PayBack()
+        {
+            int tmp = Money;
+
+            Money = 0;
+
+            return tmp;
+        }
     }
 }
