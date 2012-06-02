@@ -17,7 +17,8 @@ namespace TDDOsakaTest
             var venderMachine = new VendorMachine();
             var insertedList = new List<Money>{ 
                 new Money(1000), new Money(500), new Money(100),new Money(50), new Money(10)};
-            venderMachine.InsertMoney(insertedList);
+
+            insertedList.ForEach(_ => venderMachine.InsertMoney(_));
 
             Assert.AreEqual(1660, venderMachine.Money);
         }
@@ -30,8 +31,8 @@ namespace TDDOsakaTest
                 new Money(1000), new Money(100), new Money(10)};
             var insertedList2 = new List<Money>{ 
                 new Money(500),new Money(50)};
-            venderMachine.InsertMoney(insertedList);
-            venderMachine.InsertMoney(insertedList2);
+            insertedList.ForEach(_ => venderMachine.InsertMoney(_));
+            insertedList2.ForEach(_ => venderMachine.InsertMoney(_));
 
             Assert.AreEqual(1660, venderMachine.Money);
         }
@@ -41,7 +42,7 @@ namespace TDDOsakaTest
         {
             var venerMachine = new VendorMachine();
             var insertedMoney = new Money(10000);
-           
+
 
             int ret = venerMachine.InsertMoney(insertedMoney);
 
